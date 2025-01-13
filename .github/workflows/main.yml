@@ -57,4 +57,4 @@
           username:  ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           port: ${{ secrets.SSH_PORT }}
-          script: cd ${{ inputs.docker_root }}/${{ steps.repo-name.outputs.repository-name }}/config && echo $(date) > ver && git add . && git commit -m "auto" && git push
+          script: docker stop radarr && cd ${{ inputs.docker_root }}/${{ steps.repo-name.outputs.repository-name }}/config && echo $(date) > ver && git add . && git commit -m "auto" && git push && docker start radarr
